@@ -34,7 +34,7 @@ export default class Character {
         defence: 40,
       },
     ];
-    if (name.lenght < 2) {
+    if (name.lenght < 2 || name.lenght > 10) {
       throw new Error('Некорректное имя');
     }
     if (!subclasses.find((item) => item.type === type)) {
