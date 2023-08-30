@@ -34,7 +34,7 @@ export default class Character {
         defence: 40,
       },
     ];
-    if (name.lenght < 2 || name.lenght > 10) {
+    if (name.length < 2 || name.length > 10) {
       throw new Error('Некорректное имя');
     }
     if (!subclasses.find((item) => item.type === type)) {
@@ -46,5 +46,19 @@ export default class Character {
     this.level = 1;
     this.attack = subclasses.find((item) => item.type === type).attack;
     this.defence = subclasses.find((item) => item.type === type).defence;
+  }
+
+  levelup() {
+    if (this.health <= 0) {
+      throw new Error('YOU DEAD');
+    }
+    this.level += 1;
+    this.health = 100;
+    this.attack += (this.attack * 20) / 100;
+    this.defence += (this.defence * 20) / 100;
+  }
+
+  damage(points) {
+    this.health -= points * (1 - this.defence / 100);
   }
 }

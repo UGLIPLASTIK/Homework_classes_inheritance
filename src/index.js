@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 import Character from './js/character';
 
-const char = new Character('boba', 'Zombie');
-// console.log(char);
+const char = new Character('Biba', 'Zombie');
+char.levelup();
+char.damage(20);
+console.log(char);
