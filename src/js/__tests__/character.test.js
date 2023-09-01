@@ -1,3 +1,4 @@
+/* eslint-disable no-new */
 /* eslint-disable no-unused-vars */
 import Character from '../character';
 
@@ -14,11 +15,15 @@ test('Character constructor', () => {
 });
 
 test('Uncorrect name warn', () => {
-  expect(new Character('B', 'Undead')).toThrow(new Error('Неверно указан класс'));
+  expect(() => {
+    new Character('B', 'Undead');
+  }).toThrow('Некорректное имя');
 });
 
 test('Uncorrect class name', () => {
-  expect(new Character('Boba', 'Undeaded')).toThrow(new Error('Неверно указан класс'));
+  expect(() => {
+    new Character('Boba', 'Undeaded');
+  }).toThrow('Неверно указан класс');
 });
 
 test('lvlup method', () => {
@@ -27,30 +32,33 @@ test('lvlup method', () => {
     name: 'Boba',
     health: 100,
     level: 2,
-    attack: 48,
-    defence: 12,
+    attack: 30,
+    defence: 30,
   };
 
   const testChar = new Character('Boba', 'Undead');
-
-  expect(testChar.levelup()).toEqual(testUpChar);
+  testChar.levelup();
+  expect(testChar).toEqual(testUpChar);
 });
 
-// test('lvlup method warn', () => {
-//   const testChar = new Character('Boba', 'Undead');
-//   testChar.health = 0;
-//   expect(testChar.levelup()).toThrow(new Error('YOU DEAD'));
-// });
+test('lvlup method warn', () => {
+  const testChar = new Character('Boba', 'Undead');
+  testChar.health = 0;
+  expect(() => {
+    testChar.levelup();
+  }).toThrow('YOU DEAD');
+});
 
-// test('damage method', () => {
-//   const testDamagedChar = {
-//     type: 'Undead',
-//     name: 'Boba',
-//     health: 82,
-//     level: 1,
-//     attack: 25,
-//     defence: 25,
-//   };
-//   const testChar = new Character('Boba', 'Undead');
-//   expect(testChar.damage(20)).toEqual(testDamagedChar);
-// });
+test('damage method', () => {
+  const testDamagedChar = {
+    type: 'Undead',
+    name: 'Boba',
+    health: 85,
+    level: 1,
+    attack: 25,
+    defence: 25,
+  };
+  const testChar = new Character('Boba', 'Undead');
+  testChar.damage(20);
+  expect(testChar).toEqual(testDamagedChar);
+});
