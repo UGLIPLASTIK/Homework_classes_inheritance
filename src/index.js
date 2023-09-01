@@ -2,6 +2,5 @@
 import Character from './js/character';
 
 const char = new Character('Biba', 'Zombie');
-char.levelup();
 char.damage(20);
 console.log(char);
