@@ -2,50 +2,23 @@
 
 export default class Character {
   constructor(name, type) {
-    const subclasses = [
-      {
-        type: 'Bowman',
-        attack: 25,
-        defence: 25,
-      },
-      {
-        type: 'Swordsman',
-        attack: 40,
-        defence: 10,
-      },
-      {
-        type: 'Magician',
-        attack: 10,
-        defence: 40,
-      },
-      {
-        type: 'Undead',
-        attack: 25,
-        defence: 25,
-      },
-      {
-        type: 'Zombie',
-        attack: 40,
-        defence: 10,
-      },
-      {
-        type: 'Daemon',
-        attack: 10,
-        defence: 40,
-      },
-    ];
+    const subclasses = ['Bowman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie'];
     if (name.length < 2 || name.length > 10) {
-      throw new Error('Некорректное имя');
+      throw new Error('Имя должно содержать от 2 до 10 символов');
+    } else {
+      this.name = name;
     }
-    if (!subclasses.find((item) => item.type === type)) {
-      throw new Error('Неверно указан класс');
+
+    if (!subclasses.includes(type)) {
+      throw new Error('Неизвестное существо');
+    } else {
+      this.type = type;
     }
-    this.type = type;
-    this.name = name;
+
     this.health = 100;
     this.level = 1;
-    this.attack = subclasses.find((item) => item.type === type).attack;
-    this.defence = subclasses.find((item) => item.type === type).defence;
+    this.attack = undefined;
+    this.defence = undefined;
   }
 
   levelup() {

@@ -1,32 +1,14 @@
 /* eslint-disable no-new */
 /* eslint-disable no-unused-vars */
-import Character from '../character';
+import Undead from '../class/undead';
 
-test('Character constructor', () => {
-  const testChar = {
-    type: 'Undead',
-    name: 'Boba',
-    health: 100,
-    level: 1,
-    attack: 25,
-    defence: 25,
-  };
-  expect(new Character('Boba', 'Undead')).toEqual(testChar);
-});
-
-test('Uncorrect name warn', () => {
+test('Проверка корректности имени', () => {
   expect(() => {
-    new Character('B', 'Undead');
-  }).toThrow('Некорректное имя');
+    new Undead('B');
+  }).toThrow('Имя должно содержать от 2 до 10 символов');
 });
 
-test('Uncorrect class name', () => {
-  expect(() => {
-    new Character('Boba', 'Undeaded');
-  }).toThrow('Неверно указан класс');
-});
-
-test('lvlup method', () => {
+test('Тест повышения уровня', () => {
   const testUpChar = {
     type: 'Undead',
     name: 'Boba',
@@ -36,20 +18,20 @@ test('lvlup method', () => {
     defence: 30,
   };
 
-  const testChar = new Character('Boba', 'Undead');
+  const testChar = new Undead('Boba');
   testChar.levelup();
   expect(testChar).toEqual(testUpChar);
 });
 
-test('lvlup method warn', () => {
-  const testChar = new Character('Boba', 'Undead');
+test('Тест повышения уровня при нулевом здоровье', () => {
+  const testChar = new Undead('Boba');
   testChar.health = 0;
   expect(() => {
     testChar.levelup();
   }).toThrow('YOU DEAD');
 });
 
-test('damage method', () => {
+test('Тест получения урона', () => {
   const testDamagedChar = {
     type: 'Undead',
     name: 'Boba',
@@ -58,7 +40,7 @@ test('damage method', () => {
     attack: 25,
     defence: 25,
   };
-  const testChar = new Character('Boba', 'Undead');
+  const testChar = new Undead('Boba');
   testChar.damage(20);
   expect(testChar).toEqual(testDamagedChar);
 });
