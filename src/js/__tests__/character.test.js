@@ -1,6 +1,13 @@
 /* eslint-disable no-new */
 /* eslint-disable no-unused-vars */
 import Undead from '../class/undead';
+import Character from '../character';
+
+test('Ошибка в type', () => {
+  expect(() => {
+    new Character('Boba', 'Dead');
+  }).toThrow('Неизвестное существо');
+});
 
 test('Проверка корректности имени', () => {
   expect(() => {
