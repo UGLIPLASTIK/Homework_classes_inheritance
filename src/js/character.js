@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 export default class Character {
   constructor(name, type) {
     const subclasses = ['Bowman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie'];
