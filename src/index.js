@@ -1,14 +1,11 @@
 /* eslint-disable no-unused-vars */
 // import Character from './js/character';
+import Daemon from './js/class/daemon';
 import Bowman from './js/class/bowman';
 import Undead from './js/class/undead';
 import Team from './js/team';
 
-const bowman = new Bowman('Biba');
-const undead = new Undead('Boba');
+const daemon = new Daemon('Biba');
 
-const team = new Team();
-team.addAll(undead);
-team.toArray();
-
-console.log(team.members);
+console.log(daemon.attack);
+// console.log(daemon.attack);

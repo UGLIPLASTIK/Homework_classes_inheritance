@@ -1,6 +1,7 @@
 export default class Character {
   constructor(name, type) {
     const subclasses = ['Bowman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie'];
+
     if (name.length < 2 || name.length > 10) {
       throw new Error('Имя должно содержать от 2 до 10 символов');
     } else {
