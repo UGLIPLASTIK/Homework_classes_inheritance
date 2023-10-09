@@ -2,6 +2,7 @@
 export default class Team {
   constructor() {
     this.members = new Set();
+    this.it = this.members.values();
   }
 
   add(character) {
@@ -21,5 +22,9 @@ export default class Team {
     const teamArr = [];
     this.members.forEach((member) => teamArr.push(member));
     return teamArr;
+  }
+
+  iterate() {
+    return this.it.next().value;
   }
 }
